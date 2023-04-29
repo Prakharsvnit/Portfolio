@@ -2,20 +2,19 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const NavBar = () => {
-  const [navBgColor, setNavBgColor] = useState("bg-transparent");
-  const [navActive, setNavActive] = useState("text-gray-300");
+  const [navBgColor, setNavBgColor] = useState("bg-blue-800");
 
+  // This effect updates the background color of the navigation bar when scrolling
   useEffect(() => {
+    // `handleScroll` is the function that updates the background color of the navigation bar
     const handleScroll = () => {
       if (window.scrollY > 0) {
-        setNavBgColor("bg-gray-900");
-        setNavActive("text-white");
+        setNavBgColor("bg-blue-200");
       } else {
         setNavBgColor("bg-transparent");
-        setNavActive("text-gray-300");
       }
     };
-
+    // Add event listener for scrolling and remove it when the component unmounts
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -30,6 +29,7 @@ const NavBar = () => {
             <div className="text-xl font-semibold text-white">
               <Link href="/">Brand</Link>
             </div>
+
             <div className="flex md:hidden">
               <button
                 type="button"
@@ -45,39 +45,29 @@ const NavBar = () => {
               </button>
             </div>
           </div>
-          <div className="flex flex-col md:flex-row md:-mx-4 md:block mt-2 md:mt-0">
+          <div className="flex flex-col text-white md:flex-row md:-mx-4 md:block mt-2 md:mt-0">
             <Link href="/">
-              <span
-                className={`my-1 text-gray-300 hover:${navActive} md:mx-4 md:my-0`}
-              >
+              <span className={`my-1 hover:font-semibold md:mx-4 md:my-0`}>
                 Home
               </span>
             </Link>
             <Link href="/about">
-              <span
-                className={`my-1 text-gray-300 hover:${navActive} md:mx-4 md:my-0`}
-              >
+              <span className={`my-1 hover:font-bold   md:mx-4 md:my-0`}>
                 About Me
               </span>
             </Link>
             <Link href="/projects">
-              <span
-                className={`my-1 text-gray-300 hover:${navActive} md:mx-4 md:my-0`}
-              >
+              <span className={`my-1 hover:font-bold  md:mx-4 md:my-0`}>
                 Projects
               </span>
             </Link>
             <Link href="/skills">
-              <span
-                className={`my-1 text-gray-300 hover:${navActive} md:mx-4 md:my-0`}
-              >
+              <span className={`my-1 hover:font-bold  md:mx-4 md:my-0`}>
                 Skills
               </span>
             </Link>
             <Link href="/contact">
-              <span
-                className={`my-1 text-gray-300 hover:${navActive} md:mx-4 md:my-0`}
-              >
+              <span className={`my-1 hover:font-bold  md:mx-4 md:my-0`}>
                 Contact
               </span>
             </Link>
