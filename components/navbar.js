@@ -2,7 +2,8 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const NavBar = () => {
-  const [navBgColor, setNavBgColor] = useState("bg-blue-800");
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [navBgColor, setNavBgColor] = useState("bg-blue-600");
 
   // This effect updates the background color of the navigation bar when scrolling
   useEffect(() => {
@@ -11,7 +12,7 @@ const NavBar = () => {
       if (window.scrollY > 0) {
         setNavBgColor("bg-blue-200");
       } else {
-        setNavBgColor("bg-transparent");
+        setNavBgColor("bg-white");
       }
     };
     // Add event listener for scrolling and remove it when the component unmounts
@@ -47,7 +48,7 @@ const NavBar = () => {
           </div>
           <div className="flex flex-col text-white md:flex-row md:-mx-4 md:block mt-2 md:mt-0">
             <Link href="/">
-              <span className={`my-1 hover:font-semibold md:mx-4 md:my-0`}>
+              <span className={`my-1  hover:font-bold md:mx-4 md:my-0`}>
                 Home
               </span>
             </Link>
@@ -71,12 +72,11 @@ const NavBar = () => {
                 Contact
               </span>
             </Link>
-            <span
-              href="/resume"
-              className={`my-1 bg-gray-900 hover:bg-gray-800 text-white px-4 py-2 rounded-md md:mx-4 md:my-0`}
-            >
-              Resume
-            </span>
+            <Link href="/resume">
+              <span className={`my-1 hover:font-bold  md:mx-4 md:my-0`}>
+                Resume
+              </span>
+            </Link>
           </div>
         </div>
       </div>
